@@ -34,21 +34,20 @@ public class StairCases
 
   /**
    * printAscending prints the staircase of x's from 1 up to inputted number
-   * @param dimension of staircase
+   * @param dimensions of staircase
    * prints directly to screen. returns void
    */
 
   public static void printAscending(int dimensions) //DONT FORGET: dimensions is a new variable so much be given type
   	{
   		//Counter will be used to make sure inner for loop happens 1 addition time each run through
-  		int counter = dimensions;
   		
-  		for (int x = 1; x <= dimensions; x++) //Do what is inside of this loop xDimensions
+  		//Use less than because counter = 0. If = 1, <=...
+  		for (int counter = 0; counter < dimensions; counter++) //Do what is inside of this loop xDimensions
   		{
-  			counter++; //So each time we go through loop, inner for loop is gone through 1 more time
   			
   			//Crucial: Every time you go into this loop, y will reset to inputted dimensions
-  			for (int y = dimensions; y < counter; y++)
+  			for (int y = 0; y <= counter; y++)
   			{
   				System.out.print("x ");
   			}
@@ -57,21 +56,19 @@ public class StairCases
   		}
   	
   	}
-
-  /**
+  	 
+   /**
    * printDescending prints a staircase of x's starting at inputted number down to x
    * @param dimensions of staircase
    */
   public static void printDescending(int dimensions)
   {
   	
-  	//Make counter 1 more than dimensions so that you can subtract 1 each time you go through outer for loop
-  	int counter = (dimensions + 1);
-  	
-  	for (int x = 1; x <= dimensions; x++)
+  	//Opposite of ascending. X starts at high end and decreases each time
+  	//Second condition on for loop. x must be greater than 0 or loop will go on forever
+  	for (int x = dimensions; x <= dimensions && x > 0; x--)
   	{
-  		counter--; //Subtract one from counter each time so that goes through inner loop 1 less time
-  		for (int y = 1; y <= counter; y++)
+  		for (int y = 0; y < x; y++)
   		{
   			System.out.print("x ");
   		
@@ -80,3 +77,5 @@ public class StairCases
   	}
   }
 }
+
+ 
