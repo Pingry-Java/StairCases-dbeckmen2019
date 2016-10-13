@@ -5,13 +5,14 @@ import java.util.Scanner;
  * inputted dimensions
  * @author Drew Beckmen
  * @author Josh Orndorff
- * @version 1.0
+ * @version 1.1
  */
 
 public class StairCases
 {
   /**
    * Main method demonstrates the other two methods by calling each of them.
+   * Asks for user input for dimensions
    * @param args Standard array of commandline String arguments. Not used in this program.
    */
 
@@ -26,6 +27,7 @@ public class StairCases
     keyboard.nextLine(); 
    
     printAscending(size);
+    
     //Print an extra line for formatting purposes
     System.out.println();
     
@@ -34,47 +36,38 @@ public class StairCases
 
   /**
    * printAscending prints the staircase of x's from 1 up to inputted number
+   * Prints using a recursive algorithm (head recursion)
    * @param dimensions of staircase
-   * prints directly to screen. returns void
    */
 
   public static void printAscending(int dimensions) //DONT FORGET: dimensions is a new variable so much be given type
   	{
-  		//Counter will be used to make sure inner for loop happens 1 addition time each run through
-  		
-  		//Use less than because counter = 0. If = 1, <=...
-  		for (int counter = 0; counter < dimensions; counter++) //Do what is inside of this loop xDimensions
+  		if (dimensions > 1)
   		{
-  			
-  			//Crucial: Every time you go into this loop, y will reset to inputted dimensions
-  			for (int y = 0; y <= counter; y++)
-  			{
-  				System.out.print("x ");
-  			}
-  			
-  			System.out.println();
+  			printAscending(dimensions - 1); 
   		}
-  	
+  		for (int i = 0; i < dimensions; i++)
+  		{
+  			System.out.print("x "); 
+  		}
+  		System.out.println(); 
   	}
   	 
    /**
    * printDescending prints a staircase of x's starting at inputted number down to x
+   * Prints using a recursive algorithm (tail recursion) 
    * @param dimensions of staircase
    */
   public static void printDescending(int dimensions)
   {
-  	
   	//Opposite of ascending. X starts at high end and decreases each time
-  	//Second condition on for loop. x must be greater than 0 or loop will go on forever
-  	for (int x = dimensions; x <= dimensions && x > 0; x--)
+  	for (int i = 0; i < dimensions; i++)
   	{
-  		for (int y = 0; y < x; y++)
-  		{
-  			System.out.print("x ");
-  		
-  		} 
-  		System.out.println();
+  		System.out.print("x "); 
   	}
+  	System.out.println(); 
+  	if (dimensions > 1)
+  		printDescending(dimensions - 1); 
   }
 }
 
